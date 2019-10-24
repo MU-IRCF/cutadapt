@@ -185,7 +185,7 @@ def get_argument_parser():
             "mask: replace with 'N' characters; "
             "lowercase: convert to lowercase; "
             "none: leave unchanged (useful with "
-            "--discard-untrimmed). Default: trim")
+            "--discard-untrimmed). Default: %(default)s")
     group.add_argument("--no-trim", dest='action', action='store_const', const='none',
         help=SUPPRESS)  # Deprecated, use --action=none
     group.add_argument("--mask-adapter", dest='action', action='store_const', const='mask',
@@ -254,8 +254,8 @@ def get_argument_parser():
     group = parser.add_argument_group("Output")
     group.add_argument("--quiet", default=False, action='store_true',
         help="Print only error messages.")
-    group.add_argument("--report", choices=('full', 'minimal'), default=None,
-        help="Which type of report to print: 'full' or 'minimal'. Default: full")
+    group.add_argument("--report", choices=('full', 'minimal'), default='full',
+        help="Which type of report to print: 'full' or 'minimal'. Default: %(default)s")
     group.add_argument("-o", "--output", metavar="FILE",
         help="Write trimmed reads to FILE. FASTQ or FASTA format is chosen "
             "depending on input. Summary report is sent to standard output. "
